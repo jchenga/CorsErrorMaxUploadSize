@@ -1,0 +1,27 @@
+
+<form>
+  <div>
+    <label>Select file to upload</label>
+    <input type="file">
+  </div>
+  <button type="submit">Convert</button>
+</form>
+<script type="application/javascript">
+
+  const input = document.querySelector('input[type="file"]')
+
+  const upload = (file) => {
+
+    fetch('http://localhost:8080/v1/file', {
+      method: 'POST',
+      headers: {
+        "Content-Type": 'multipart/form-data'
+      },
+      body: file
+    });
+  }
+
+  const selectFile = () => upload(input.files[0]);
+  input.addEventListener('change', selectFile, false);
+
+</script>
