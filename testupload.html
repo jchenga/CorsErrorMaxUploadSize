@@ -11,13 +11,12 @@
   const input = document.querySelector('input[type="file"]')
 
   const upload = (file) => {
-
+    const formData = new FormData();
+    formData.append('file', file);
+    console.log(file.name);
     fetch('http://localhost:8080/v1/file', {
       method: 'POST',
-      headers: {
-        "Content-Type": 'multipart/form-data'
-      },
-      body: file
+      body: formData
     });
   }
 
